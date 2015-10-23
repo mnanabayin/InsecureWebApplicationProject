@@ -4,7 +4,7 @@ require_once 'Include/VeritabaniBaglantisi.php';
 
 
 $sql="SELECT * FROM ogrenciler where ogrenciNo='".$_POST['ogrenciNo']."'";
-echo $sql;
+//echo $sql;
 $result = mysqli_query($baglantiNo,$sql);
 
 $kayit=mysqli_fetch_row($result);

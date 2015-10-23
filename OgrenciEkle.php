@@ -5,7 +5,7 @@
 
 <span class="contentBox"> 
 <h4>
-			 	Öğrenci İlk Kayıt <a id="oncekiSayfa" ><img align="right" src="../../img/oncekiSayfa.png" width="25" height="25" /></a><br />
+			 	Öğrenci İlk Kayıt <a id="oncekiSayfa" ><img align="right" src="img/oncekiSayfa.png" width="25" height="25" /></a><br />
 
                </h4>
  </span>
