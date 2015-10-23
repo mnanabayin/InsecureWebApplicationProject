@@ -1,6 +1,8 @@
 
 <?php
-
+/*
+ * Personel Numarası alanına ( 1' or 1 # ) ifadesi girilerek yetkisiz erişim gerçekleştirilebilir...
+ */
 require_once 'Include/DatabaseConnection.php';
 require_once 'Classes/ClassSessionManagement.php';
 //require_once 'Classes/ClassNesneOlusturucu.php';
@@ -16,7 +18,11 @@ require_once 'Classes/ClassSessionManagement.php';
 
 //$kisi1=NesneOlusturucu::nesneOlustur('Kisi');
 
+//var_dump($veritabani);
+
+
 $userService = new SessionManagement($veritabani, $_POST['personelNo'], $_POST['sifre']);
+//var_dump($userService);
 
 if ($user=$userService->login())
 {
@@ -29,6 +35,7 @@ if ($user=$userService->login())
 
     $_SESSION['baslangicZamani']=time();
     $_SESSION['user']=$user;
+    //serialize(new User(mysqli_fetch_assoc($result)));
 
     // Yetki düzeyi de eklenmeli...
 

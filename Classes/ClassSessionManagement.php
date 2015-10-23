@@ -9,7 +9,7 @@ class SessionManagement {
     protected $database;
     protected $user;     // stores the user data
 
-    public function __construct(PDO $db, $userName, $password)
+    public function __construct($db, $userName, $password)
     {
         $this->database = $db;
         $this->userName = $userName;
@@ -18,32 +18,35 @@ class SessionManagement {
 
     public function login()
     {
-        $user = $this->_checkCredentials();
+        $user = $this->checkCredentials();
         if ($user) {
-            $this->user = $user; // store it so it can be accessed later
+            $this->user = $user; // store it for further consideration
             //$_SESSION['user'] = $this->user;
             return $user;//$user['id'];
         }
         return false;
     }
 
-    protected function _checkCredentials()
+    protected function checkCredentials()
     {
-        $stmt = $this->database->prepare('SELECT * FROM personel WHERE personelNo=?');
-        $stmt->execute(array($this->userName));
-        if ($stmt->rowCount() > 0) {
-            $user = $stmt->fetch(PDO::FETCH_ASSOC);
-            // $submitted_pass = sha1($user['salt'] . $this->_password);
-            if ($this->password == $user['sifre']) {
-                return $user;
-            }
+        $sql="SELECT personelNo, adi, soyadi,sifre FROM personel where personelNo='".$this->userName."' AND sifre='".$this->password."'";//sifre='".md5($this->password)."'";
+
+        $result = mysqli_query($this->database,$sql);
+        $kayit=mysqli_fetch_array($result);
+        //$_SESSION["user"] = serialize(new User(mysqli_fetch_assoc($result)));
+        mysqli_close($this->database);
+        if(mysqli_num_rows($result)!=0)
+
+        {
+                return $kayit;
+
         }
         return false;
     }
 
     public function getUser()
     {
-        return $this->_user;
+        return $this->user;
     }
 
     /*if(mysql_num_rows($result) == 1)

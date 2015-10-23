@@ -1,6 +1,7 @@
 <?php
-require_once 'Configuration/DatabaseCredentials.php';
-require_once 'ClassIstisnaVeritabani.php';
+//echo "ClassVeritabaniMysqli" ;
+
+require_once(__DIR__.'/../Configuration/DatabaseCredentials.php');
 
 /**
  * Class Veritabani
@@ -31,9 +32,17 @@ class Veritabani //implements VeritabaniArayuz
     {
         global $sunucu, $kullaniciAdi, $sifre, $veritabani;
 
-        try {
-            $this->veritabani = new PDO("mysql:host=localhost;dbname=ob;charset=utf8", "LectureUser", "LecturePassword");
-        } catch ( PDOException $e ){
+        try
+        {
+            $this->veritabani= mysqli_connect($sunucu, $kullaniciAdi, $sifre, $veritabani);
+            // Bağlantiyi doğrula
+            if (mysqli_connect_errno())
+            {
+                echo "bağlantı başarısız... " . mysqli_connect_error();
+            }
+            mysqli_set_charset($this->veritabani,"utf8");
+
+        } catch ( Exception $e ){
             print $e->getMessage();
         }
 

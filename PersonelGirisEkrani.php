@@ -121,7 +121,7 @@ require_once 'Include/Baslik.php';
 				<td>Şifre:</td>
 
 				<td>
-				<input type="password"  id="sifre" name="sifre" />
+				<input type="password"  id="sifre" name="sifre"/>
 				</td>
 			</tr>
 			<tr>
@@ -129,7 +129,7 @@ require_once 'Include/Baslik.php';
 				<td></td>
 
 				<td>
-				<input type="submit"  id="giris" name="giris" value="Giriş"  />
+				<input type="submit"  id="giris" name="giris" value="Giriş" />
 				</td>
 			</tr>
 			<tr>
@@ -144,5 +144,5 @@ require_once 'Include/Baslik.php';
 
 
 <?php
-	include 'Genel/Altlik.php';
+	include 'Include/Altlik.php';
 ?>

@@ -6,9 +6,9 @@
  * Time: 02:08
  */
 
-
-	require_once 'Classes/ClassVeritabaniMysqli.php';
-	require_once 'Classes/ClassIstisnaVeritabani.php';
+require_once(__DIR__.'/../Classes/ClassVeritabaniMysqli.php');
+require_once(__DIR__.'/../Classes/ClassIstisnaVeritabani.php');
+// __DIR__ dosyanin bulunduğu dizin yolu döner.
 
 	try
     {
@@ -22,5 +22,5 @@
     }
 
     $veritabani=$veritabaniNesnesi->getVeritabani();
-
+   // var_dump($veritabani);
 
